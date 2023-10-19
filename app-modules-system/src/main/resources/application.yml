@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/app?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+    hikari:
+      pool-name: HikariCP
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+      validation-timeout: 5000
+      leak-detection-threshold: 60000
+      initialization-fail-timeout: 1
+      auto-commit: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+log:
+  aspect:
+    enabled: true
+
+swagger:
+  base-package: com.ych
+  title: API 接口文档
+  description: API 接口文档
+  version: 1.0.0
+  contact:
+    name: ych
+    email: 930971720@qq.com
+    url: http://localhost:8080/doc.html#/home
+
+mybatis-plus:
+  mapper-locations: classpath*:com/ych/**/mapper/xml/*Mapper.xml
